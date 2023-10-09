@@ -18,11 +18,21 @@ void imprimir_matriz(float **matriz) {
     }
 }
 
-void sumar_matrices(float **matriz, float **matriz2 ){
+void suma_matrices(float **matriz, float **matriz2 ){
     std::cout << "La suma de las matrices es "  << "\n" ;
     for (int i = 0; i < N_FILAS; i++) {
         for (int j = 0; j < N_FILAS; j++) {
             std::cout << matriz[i][j] + matriz2[i][j] << '\t';
+        }
+        std::cout << std::endl;
+    }    
+}
+
+void resta_matrices(float **matriz, float **matriz2 ){
+    std::cout << "La resta de las matrices es "  << "\n" ;
+    for (int i = 0; i < N_FILAS; i++) {
+        for (int j = 0; j < N_FILAS; j++) {
+            std::cout << matriz[i][j] - matriz2[i][j] << '\t';
         }
         std::cout << std::endl;
     }    
@@ -60,8 +70,9 @@ int main(void) {
     imprimir_matriz(matriz);
     imprimir_matriz(matriz2);
 
-    sumar_matrices( matriz , matriz2 );
-
+    suma_matrices( matriz , matriz2 );
+    resta_matrices( matriz , matriz2);
+    
     //Se borra cada fila de la matriz.
     for (int i = 0; i < N_FILAS; i++) {
         delete[] matriz[i];
@@ -71,8 +82,6 @@ int main(void) {
     //Se borran los apuntadores a cada fila de la matriz.
     delete[] matriz;
     delete[] matriz2;
-
-    //pepe
 
     return 0;
 
