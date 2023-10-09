@@ -3,8 +3,8 @@
     Una vez creada la matriz dinámica, nótese que su uso es igual al de una matriz "normal". */
 
 #include <iostream> //Biblioteca para flujos estándar de C++.
-#define N_FILAS 2   //Macro que define N_FILAS como 2.
-//#define N_COLUS 3   //Macro que define N_COLUS como 3.
+int N_FILAS;
+
 
 
 //Función que imprime una matriz. Nótese su manejo como matriz "normal".
@@ -37,6 +37,23 @@ void resta_matrices(float **matriz, float **matriz2 ){
         std::cout << std::endl;
     }    
 }
+void multiplicacion_matrices(float **matriz1, float **matriz2) {
+    std::cout << "La multiplicacion de las matrices es "  << "\n" ;
+    int resultado;
+    for (int i = 0; i < N_FILAS; i++) {
+        for (int j = 0; j < N_FILAS; j++) {
+            resultado= 0.0;
+
+            for (int k = 0; k < N_FILAS; k++) {
+                resultado += matriz1[i][k] * matriz2[k][j];
+            }
+
+            std::cout << resultado<< '\t';
+        }
+        std::cout << std::endl;
+    }
+}
+
 
 //Función que llena con valores una matriz. Nótese su manejo como matriz "normal".
 //Recibe un apuntador de apuntadores representando la matriz y no regresa nada.
@@ -53,6 +70,8 @@ void llenar_matriz(float **matriz, int intento) {
 int main(void) {
     float **matriz; //Apuntador a apuntador donde se guardará la referencia de la matriz.
     float **matriz2;
+    std::cout << "Ingresa N(tus matrices seran de NXN)" << std::endl;
+    std::cin >> N_FILAS;
 
     //Se reserva memoria para N_FILAS cantidad de filas.
     matriz = new float*[N_FILAS];
@@ -72,6 +91,7 @@ int main(void) {
 
     suma_matrices( matriz , matriz2 );
     resta_matrices( matriz , matriz2);
+    multiplicacion_matrices(matriz, matriz2);
     
     //Se borra cada fila de la matriz.
     for (int i = 0; i < N_FILAS; i++) {
