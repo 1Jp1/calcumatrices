@@ -18,6 +18,16 @@ void imprimir_matriz(float **matriz) {
     }
 }
 
+void sumar_matrices(float **matriz, float **matriz2 ){
+    std::cout << "La suma de las matrices es "  << "\n" ;
+    for (int i = 0; i < N_FILAS; i++) {
+        for (int j = 0; j < N_FILAS; j++) {
+            std::cout << matriz[i][j] + matriz2[i][j] << '\t';
+        }
+        std::cout << std::endl;
+    }    
+}
+
 //Función que llena con valores una matriz. Nótese su manejo como matriz "normal".
 //Recibe un apuntador de apuntadores representando la matriz y no regresa nada.
 void llenar_matriz(float **matriz, int intento) {
@@ -49,6 +59,8 @@ int main(void) {
     llenar_matriz( matriz2, 2);    
     imprimir_matriz(matriz);
     imprimir_matriz(matriz2);
+
+    sumar_matrices( matriz , matriz2 );
 
     //Se borra cada fila de la matriz.
     for (int i = 0; i < N_FILAS; i++) {
